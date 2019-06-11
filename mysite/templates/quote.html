@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {background-color: #f2f2f2;}
+    body::-webkit-scrollbar {
+    display: none;
+    }
+    /* 滑鼠移到 <a> 時變成深底淺色 */
+    tr:hover {
+    background-color: rgb(253, 255, 142);
+    color: white;
+}
+
+.flex-nav {
+    display: flex;
+    justify-content: left;
+}
+
+    </style>
+</head>
+<body>
+<div style="height:34px">
+    <!--<div align="center" style="margin-top:4px; ">-->
+    <!--<a href="#t1" class="m1"> 臺指期 </a>&nbsp;&nbsp;-->
+    <!--<a href="#t2" class="m1"> 金融期 </a>&nbsp;&nbsp;-->
+    <!--<a href="#t3" class="m1"> 電子期 </a>&nbsp;&nbsp;-->
+    <!--<a href="#t4" class="m1">  櫃買期  </a>-->
+    <!--<a href="#t5" class="m1">小臺指期</a></div>-->
+
+    <!--</div>-->
+    <table border='1' cellpadding="10" style="border:1px">
+
+        <td width="15%"><font color="#021d41"><strong>商品</strong></font></td>
+        <td width="10%"><font color="#021d41"><strong><p>成交價</p></strong></font></td>
+        <td width="8%"><font color="#021d41"><strong><p>振幅(%)</p></strong></font></td>
+        <td width="10%"><font color="#021d41"><strong><p>漲跌</p></strong></font></td>
+        <td width="10%"><font color="#021d41"><strong><p>開盤</p></strong></font></td>
+        <td width="10%"><font color="#021d41"><strong><p>最高價</p></strong></font></td>
+        <td width="10%"><font color="#021d41"><strong><p>最低價</p></strong></font></td>
+        <td width="8%"><font color="#021d41"><strong><p>狀態</p></strong></font></td>
+        <td width="12%"><font color="#021d41"><strong><p>時間</p></strong></font></td>
+        </tr>
+        {% for a in a1 %}
+        <tr>
+            <td width="15%"><font color="#556b2f"><strong>{{ a.item }}</strong></font></td>
+            <td width="10%"><font color="#112402"><strong><p>{{ a.finalprice }}</p></strong></font></td>
+            <td width="8%"><font color="#112402"><strong><p>{{ a.amplitude}}</p></strong></font></td>
+            <td width="10%"><font color="#112402"><strong><p>{{ a.updown}}</p></strong></font></td>
+            <td width="10%"><font color="#112402"><strong><p>{{ a.open}}</p></strong></font></td>
+            <td width="10%"><font color="#112402"><strong><p>{{ a.highest}}</p></strong></font></td>
+            <td width="10%"><font color="#112402"><strong><p>{{ a.lowest}}</p></strong></font></td>
+            <td width="8%"><font color="#e82421"><strong><p>{{ a.status}}</p></strong></font></td>
+            <td width="12%"><font color="#112402"><strong><p>{{ a.time}}</p></strong></font></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <script language="JavaScript">
+function myrefresh()
+{
+       window.location.reload();
+}
+setTimeout('myrefresh()',10000); //指定1秒刷新一次
+
+    </script>
+</body>
+</html>

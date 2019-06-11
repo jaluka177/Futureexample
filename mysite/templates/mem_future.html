@@ -1,0 +1,674 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html class="app">
+<head>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+    <meta content="text/html" http-equiv="content-type">
+    <script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery-1.7.2.min.js' %}" type="text/javascript"></script>
+    <script src="http://libs.baidu.com/jquery/1.6.0/jquery.min.js">
+    </script>
+    <script src="{% static 'js/jquery.SuperSlide.2.1.1.js' %}" type="text/javascript"></script>
+    <meta charset="utf-8"/>
+    <title>管理條件清單</title>
+    <link href="{% static 'css/style.css' %}" media="screen and (max-width: 700px)" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/font.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/Zk2Pz.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/style5.css' %}" rel="stylesheet"/>
+    <link href="{% static 'images/f.png' %}" rel="shortcut icon">
+    <style type="text/css">
+/* 整體設置*/ 
+.navigation {
+	margin:0; 
+	padding:0;
+	width:1500px;
+	list-style-type:none; 
+	font:12px Arial;
+	}
+
+.navigation li {
+	float:left; 
+    padding:0; 
+	margin:0 10px 0 0; 
+	_margin:0 2px 0 0; 
+	width:150px;
+	}
+
+/* 設置選單區塊*/
+.navigation li dl { 
+	width:150px;/*ie6*/
+    margin:0; 
+	padding:0;
+	background-color:#fff;
+	border:solid 2px #666; 
+	}
+	
+.navigation li dt a , .navigation li dd a{ display:block;}
+
+
+/* 設置主選單dt */
+.navigation li dt {
+	margin:0;
+	padding: 5px;
+	text-align:center;
+	background-color:#fff;	
+	font-size: 12px;
+	font-weight: bold;
+	height:20px;
+	overflow:hidden;
+	}
+
+.navigation li dt a ,.navigation  li dt a:visited {
+	display:block; 
+    color:#333;
+    text-decoration:none;
+	}
+
+/* 設置子選單dd */
+.navigation li dd { 
+	margin:0; 
+    padding:0; 
+	color: #333; 
+	background-color:#efefef;
+	border-bottom:dotted 1px #666;
+	}
+	
+.navigation li dd.last {
+	border-bottom:0;
+	}	
+
+.navigation li dd a, .navigation  li dd a:visited {
+	display:block; 
+	color:#333; 
+    text-decoration:none; 
+	padding:4px 5px 4px 20px;
+    }
+
+	
+/*隱藏子選單*/
+.navigation li dd { display:none;}
+
+
+/* 滑鼠滑入顯示子選單 */
+.navigation li:hover dd, .navigation li a:hover dd { display:block;}
+
+/*ie6 hack*/
+.navigation li:hover,.navigation li a:hover { border:0;}
+.navigation table { border-collapse:collapse; 
+    padding:0; 		
+	text-align:left;
+	}
+.pull-right1{
+	margin-right:12px;
+	margin-top:-45px;
+	}
+	
+		/* css 重置 */
+		*{margin:0; padding:0; list-style:none; }
+		body{ background:#fff; font:normal 16px/22px 微軟正黑體; }
+		a{ text-decoration:none; color:#333;  }
+		
+				/* 本例子css */
+		.slideTxtBox{ width:1035px; border:1px solid #B8DDC4; text-align:left;background:#fff;margin-left:17px;height:240px;border-radius:10px 10px 20px 20px;box-shadow:0 0 15px rgba(0,0,0,0.5); }
+		.slideTxtBox .hd{ height:35px; line-height:35px; background:#93FBC9; padding:0 10px 0 20px; position:relative; }
+		.slideTxtBox .hd ul{ float:left;  position:absolute; left:20px; top:-1px; height:32px;   }
+		.slideTxtBox .hd ul li{ float:left; padding:0 15px; cursor:pointer;  }
+		.slideTxtBox .hd ul li.on{ height:35px;  background:#fff; border:2px solid #B8DDC4; border-bottom:2px solid #fff; }
+		.slideTxtBox .bd ul{ padding:15px;  zoom:1;  }
+		.slideTxtBox .bd li{ height:24px; line-height:24px; font-size:20px;   }
+		.slideTxtBox .bd li .date{ float:right; color:#999;font-size: 10px;  }
+
+		.page-list-title{
+		font-size:20px;
+		font-weight:bold;
+		}
+
+.page-list-title:before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50px;
+    background: #59BBD9;
+    margin: 0 3px 5px 0;
+}
+.navBar1 {
+	width:220px;
+	
+	height:20px;
+	line-height:30px;
+	background:#556b5b;
+	color:#333;
+}
+.input-lg{
+	width:170px;
+	height:40px;
+	border-radius:10px;}
+.slideTxtBox1{ width:1035px; border:1px solid #B8DDC4; text-align:left;background:#fff;margin-left:17px;height:125px;border-radius:2px; }
+.tabbox{width:505px;height:200px;background:#fff;font-family:'微软雅黑'; }
+.tabbox .tab{overflow:hidden;background:#f0f0f0;}
+.tabbox .tab a{display:block;padding:8px 18px;float:left;text-decoration:none;color:#333;}
+.tabbox .tab a:hover{background:#E64E3F;color:#fff;text-decoration:none;}
+.tabbox .tab a.on{background:#90BF60;color:#fff;text-decoration:none;}
+.tabbox .content{overflow:hidden;width:500px;height:300px;position:relative;    margin-top: -0px; margin-bottom:10px;}
+.tabbox .content ul{
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	height: 100px;
+}
+.tabbox .content li{width:500px;height:200px;float:left;}
+.tabbox .content li p{padding:10px;}
+.table tr:hover{
+	background-color:#FFFCED;
+}
+.table{
+ color:#282828;
+ font-size:16px;
+ height:200px;
+}
+.table td{
+ background-color: #FFF;
+ font-size:16px;
+}
+.btn-rounded :hover{
+
+ color:#FFEB00;
+
+}
+
+.btn-icon.btn-sm {
+    width: 30px;
+    height: 30px;
+}
+.btn-sm, .btn-group-sm .bt > .btn {
+    padding: 2px 10px 10px 10px;
+    font-size: 10px;
+    line-height: 1.5;
+    border-radius: 50px;
+}
+
+fieldset{
+    display: block;
+    -webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.75em;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    min-width: -webkit-min-content;
+    border-width: 1px;
+    border-style: groove;
+	border-radius: 1px;
+	border-width: 1px;
+    border-color: #b5d247;
+}
+fieldset legend{font:bold 14px/2 "\5fae\8f6f\96c5\9ed1";border-bottom: 0px;}
+[contenteditable="true"]{
+	outline: 1px dashed #CCC;
+}
+
+    </style>
+</head>
+<body style="background-image: url('{% static 'png/bk3.jpg' %}'); background-position: 0px 0px;">
+<!-- gotop的html語法 -->
+<section class="vbox">
+    <header>
+        <div class="navbar-header aside bg-info dk">
+            <a class="btn btn-link visible-xs" data-target="#nav,html" data-toggle="class:nav-off-screen,open">
+            </a>
+            <a class="navbar-brand text-lt" href="/smallschool/">
+                <!-- <i class="icon-earphones"></i>-->
+                <span class="hidden-nav-xs m-2-sm"> <img height="35.82" src="{% static 'png/logo1.png' %}" width="200"></span>
+                <!--<span class="hidden-nav-xs m-l-sm"><font size="4">Future<img src="{% static 'png/love.gif' %}" height="35" width="27">Futures</font>  </span>-->
+            </a>
+            <a class="btn btn-link visible-xs" data-target=".user" data-toggle="dropdown">
+                <i class="icon-settings"></i>
+            </a>
+        </div>
+
+        <div class="nav">
+            <!--nav-->
+            <div class="navBar">
+                <ul class="nav clearfix">
+                    <li class="m">
+                        <h3><a href='/get_news/' target="_self"><img src="{% static 'png/money 2.png' %}"> 新聞</a></h3>
+                    </li>
+                    <li class="s">|</li>
+                    <li class="m">
+                        <h3><font color="#FFFFFF"><a href="/recent/" target="_self"><img
+                                src="{% static 'png/tap.png' %}"> 即時資訊</a></font></h3>
+
+                    </li>
+                    <li class="s">|</li>
+                    <li class="m">
+                        <h3><a href="/editor/" target="_blank"><img src="{% static 'png/business.png' %}"> 編譯器</a></h3>
+                    </li>
+                    <li class="s">|</li>
+                    <li class="m">
+                        <h3><font color="#FFFFFF"><a target="_self"><img src="{% static 'png/school.png' %}">
+                            歷史回測</a></font>
+                        </h3>
+                        <ul class="sub">
+                            <li><a href="/algotrade/">一般回測</a></li>
+                            <li><a href="/algotradef/">會員回測</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="s">|</li>
+                    <li class="m">
+                        <h3><a href="/economic_term/" target="_self"><img src="{% static 'png/anal.png' %}"> 期貨專區</a>
+                        </h3>
+                    </li>
+                    <li class="s">|</li>
+                    <li class="m">
+                        <h3><a href="/tech/" target="_self"><img src="{% static 'png/pay.png' %}"> 下單機</a></h3>
+                    </li>
+                    <li class="s">|</li>
+                    <li class="m">
+                        <h3><font color="#FFFFFF"><a target="_self"><img src="{% static 'png/school.png' %}">
+                            新手專區</a></font>
+                        </h3>
+                        <ul class="sub">
+                            <li><a href="/get_article/">討論區</a></li>
+                            <li><a href="/new_info/">新手投資小常識</a></li>
+                        </ul>
+                    </li>
+                    <li class="s">|</li>
+                    <li class="m">
+                        <h3><font color="#FFFFFF"><a href="/member/"><img src="{% static 'png/people-3.png' %}"> 會員</a></font>
+                        </h3>
+
+                    </li>
+                    <li class="block" style="left: 227px;"></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <section>
+        <section class="hbox stretch">
+            <!-- .aside -->
+            <aside class="bg-black dk aside hidden-print" id="nav">
+                <section class="vbox">
+                    <section class="w-f-md ">
+
+                        <div class="slim-scroll " data-disable-fade-out="true" data-distance="0" data-height="auto"
+                             data-railopacity="0.2" data-size="10px">
+
+                            <nav>
+                                <ul class="nav bg-black clearfix" style="width:230px;">
+                                    <!--  <div style="margin-left:40px; margin-top:8px">
+                                   <a href="login.html" class="myButton">登入系統</a>
+                                   <a href="signin.html" class="myButton">註冊會員</a>
+                                                      </div>-->
+                                    <li class="dropdown"
+                                        style="margin-bottom:-8px; padding-left:25px; padding-right:28px">
+                                        <a class="dropdown-toggle bg clear" data-toggle="dropdown" href="#">
+
+                                            <img src="{% static 'png/man2.png' %}"><font
+                                                size="3">&nbsp;您好!&nbsp;Herry</font><b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu animated fadeInRight"
+                                            style="margin-left:35px;border-radius: 8px;">
+                                            <li>
+                                                <span class="arrow top"></span>
+                                                <a href="#"><font size="3">個人資料</font></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="badge bg-danger pull-right">3</span>
+                                                    <font size="3">訊息</font>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><font size="3">聯絡我們</font></a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <a href="/logout/"><font color="#45968F" size="3">登出</font></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <!-- <div style="margin-left:40px; margin-top:8px">
+                                  <a href="login.html" class="myButton">登入系統</a>
+                                  <a href="signin.html" class="myButton">註冊會員</a>
+                                                     </div>-->
+                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                        期貨查詢
+                                    </li>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+            <span class="input-group-btn">
+<button class="btn btn-sm bg-white btn-icon rounded" type="submit"><i class="fa fa-search"></i></button>
+            </span>
+                                            <input autocomplete="off"
+                                                   class="form-control input-sm no-border rounded mac" id="demo1"
+                                                   placeholder="請輸入期貨/代號" type="text">
+                                        </div>
+                                    </div>
+
+                                </ul>
+                                </ul></nav>
+                        </div>
+
+
+                        </ul>
+
+                        </div>
+                    </section>
+                    <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                        <div class="bg hidden-xs ">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            </a>
+                        </div>
+                    </footer>
+                </section>
+            </aside>
+            <!-- /.aside -->
+            <section id="content">
+                <section class="hbox stretch">
+                    <section>
+                        <section class="vbox">  <!--vbox-->
+                            <section class="scrollable padder-lg w-f-md" id="bjax-target">
+                                <a id="top"></a>
+                                <div class="header">
+                                    <center>
+                                        <h2 class="font-thin m-b">管理設計清單<span class="musicbar animate inline m-l-sm"
+                                                                              style="width:20px;height:20px">
+  <span class="bar1 a1 bg-primary lter"></span>
+    <span class="bar2 a2 bg-info lt"></span>
+    <span class="bar3 a3 bg-success"></span>
+    <span class="bar4 a4 bg-warning dk"></span>
+    <span class="bar5 a5 bg-danger dker"></span>
+                  </span>
+                                        </h2></center>
+                                    <div class="pull-right pull-right1">
+                                    </div>
+                                </div>
+
+                                <div class="slideTxtBox col-md-6 scrollable"
+                                     style="width:800px; margin-top:5px; height:370px; padding-top:0px;margin-left:170px;">
+                                    <div class="hd" style="background-color:#BDF4E8">
+                                        <h3 style="margin-top:0px; padding:5px;">條件清單
+                                            <font color="#057DBE"><font size="4px">會員可修改清單內容</font></font></h3>
+                                    </div>
+                                    <div class="bd" id="tab">
+                                        <div id="whole">
+                                            <ul style="height:300px; padding-top:5px;">
+                                                <form action="/mem_future/?re={{ re }}" id="mo" method="post" name="mo">
+                                                    <li style="height:60px; color:#039;">
+                                                        <fieldset id="city_china" style="height:250px;">
+                                                            <legend style="width:14%; margin-bottom:0px;"><font
+                                                                    color="#757575" face="微軟正黑體" size="+1"
+                                                                    style=" margin-left:15px;">
+     <span contenteditable="true" id="list" style="font-size:20px; color:#039;">
+         <input name="list_name" type="text" value="{{ name }}"></span></font></legend>
+                                                            <div class="scrollable" id="save" style="height:190px;">
+                                                                <table class="table" id="tabl"
+                                                                       style="background-color:#FFF; width:550px; height:0px;">
+                                                                    <tbody>
+
+                                                                    <!--checkbox1-->
+
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox1"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.0.context }}
+
+                                                                                <!--checkbox2-->
+                                                                                {% if list_now.1 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox2"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.1.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox3-->
+                                                                                {% if list_now.2 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox3"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.2.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox4-->
+                                                                                {% if list_now.3 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox4"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.3.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox5-->
+                                                                                {% if list_now.4 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox5"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.4.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox6-->
+                                                                                {% if list_now.5 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox6"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.5.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox7-->
+                                                                                {% if list_now.6 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox7"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.6.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox8-->
+                                                                                {% if list_now.7 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox8"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.7.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox9-->
+                                                                                {% if list_now.8 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox9"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.8.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox10-->
+                                                                                {% if list_now.9 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox10"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.9.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox11-->
+                                                                                {% if list_now.10 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox11"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.10.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox12-->
+                                                                                {% if list_now.11 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox12"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.11.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox13-->
+                                                                                {% if list_now.12 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox13"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.12.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox14-->
+                                                                                {% if list_now.13 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox14"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.13.context }}
+                                                                                {% endif %}
+
+                                                                                <!--checkbox15-->
+                                                                                {% if list_now.14 %}
+                                                                    <tr style="height:45px;">
+                                                                        <td bgcolor="#FFFFFF" style="height:45px;">
+                                                                            <input class="pull-left" name="checkbox15"
+                                                                                   type="checkbox" value="1">
+                                                                            <div class="funkyradio"
+                                                                                 style="margin-left:25px;">
+                                                                                {{ list_now.14.context }}
+                                                                                {% endif %}
+
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </fieldset>
+                                                        <!-------------------------------------------------->
+                                                        <div class="pull-left" id="btn"
+                                                             style="padding-top:5px;padding-bottom:10px; margin-left:85px;">
+                                                            <button class="btn btn-danger" id="clearAll" name="clearAll"
+                                                                    onClick="delete2()" style="margin-left:10px;"
+                                                                    value="clearAll">整筆清單刪除
+                                                            </button>
+                                                            <input class="btn btn-primary pull-right" id="clear1"
+                                                                   name="clear" style="margin-left:10px;" type="submit"
+                                                                   value="刪除勾選條件"></div>
+                                                    </li>
+                                                    <button class="btn btn-info" id="re2" name="re2"
+                                                            style="margin-left:5px; margin-top:195px;" value="re2">修改名稱
+                                                    </button>
+                                                    <a class="btn btn-default pull-right1" href="/mem_sto/" name="back"
+                                                       style="margin-top: 195px; margin-left: 250px;">返回</a>
+                                                    <!--原始
+                                                    <input type="submit" class="btn btn-primary pull-right" style="margin-left:10px;" id="re2" name="re2" value="確認修改"></div></li>
+                                                    <button class="btn btn-info" name="clear" value="clear" id="clear1" style="margin-left:5px; margin-top:195px;" onClick="delete1()">確認刪除</button>
+                                                    -->
+                                                </form>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr style="margin-top:10px;">
+                                </div>
+                                <script>
+  function delete1() {
+    $("#tabl input[type='checkbox']:checked").closest("tr").remove();
+}
+
+                                </script>
+                                <script>
+  function delete2() {
+	 if(confirm("您確定要刪除整個清單嗎？")==true){
+    $('#whole').remove();
+	window.location.href = 'mem_sto.html';
+	alert("您已刪除清單");
+	}
+else{
+	window.location.href = 'mem_future.html';
+	}}
+
+                                </script>
+
+                                </li></ul>
+                                </div>
+                            </section>
+                            <footer class="footer bg-alert">
+                                <h6 align="center">Copyright ® 2019 by Future Futures.com. Corp. All right reserved.
+                                </h6>
+                            </footer>
+
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+<!--要加!-->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script>window.jQuery || document.write('<script src="{% static 'js/jquery-2.1.1.min.js' %}"><\/script>')</script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<!-- App -->
+<script src="{% static 'js/zzsc.js' %}" type="text/javascript"></script>
+<a href="#top">
+    <div id="gotop"><i class="fa fa-hand-o-up"></i> top</div>
+</a>
+</body>
+</html>

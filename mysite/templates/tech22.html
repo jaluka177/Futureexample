@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+    </style>
+</header>
+<body>
+
+<h3 align="center">下單機</h3>
+
+<div>
+    <form action="/tech/" method="POST">
+        <label><font size="5">選擇期貨商</font></label>
+        <select>
+            <option value="元大">元大</option>
+            <option value="群益">群益</option>
+            <option value="永豐">永豐</option>
+        </select>
+        <select style=" font-size:18px; color:#333; border-radius:5px;  border: #acacac 1px solid">
+
+            <option>請選擇期貨</option>
+            {% for company in d_2 %}
+            <option value="{{ company.future_name }}">{{ company.future_name }}</option>
+            {% endfor %}
+
+        </select>
+        <label><font size="5">下單帳號</font></label>
+        <input placeholder="請輸入帳號" type="text">
+
+        <label><font size="5">請輸入身分證字號</font></label>
+        <input placeholder="請輸入身分證字號" type="text">
+
+        <label><font size="5">用戶密碼</font></label>
+        <br>
+        <input placeholder="請輸入密碼" type="password">
+        <br> <br>
+        <label><font size="5">購買數量</font></label>
+        <input placeholder="請輸入購買的口數" type="text">
+
+
+    </form>
+    <center>
+        <button class="btn btn-outline-success" style="width:200px;height:40px;font-size:20px;">
+            <a href="/tech5/">送出</a>
+
+        </button>
+    </center>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>發送 LINE 訊息</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+</head>
+<body>
+
+<h1>good</h1>
+<section id="content">
+    <form action="/email/" method="post">
+        <fieldset id="city_china">
+
+
+            <div class="pull-right;" style="width:508px; margin-top:-30px; margin-left:45px">
+                <label>
+                    <input name="check3" type="checkbox" value="當日新聞"><i></i> 當日新聞</label>
+            </div>
+            <div align="center">
+                <button name="complete" style="width: 120px" type="submit" value="1">設定完成</button>
+            </div>
+    </form>
+
+</section>
+<button>发送一个 HTTP POST 请求页面并获取返回内容</button>
+<!--<script>-->
+<!--$(function(){-->
+<!--$.post('https://maker.ifttt.com/trigger/line/with/key/kb6X-SLk2GZEcOpXKFfr_-vRzP2jxrdvIU5W3kxgFyL',{value1:'Hello World'});-->
+<!--});-->
+<!--</script>-->
+<script>
+$(document).ready(function(){
+	$("button").click(function(){
+		$(function(){
+            $.post('https://maker.ifttt.com/trigger/line/with/key/p_Ub6UOhbz3C8poOgG_P2',{value1:'Hello World'});
+        });
+
+	});
+});
+
+</script>
+</body>
+</html>
